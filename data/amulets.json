@@ -1,6 +1,80 @@
 {
   "database_name": "Luang Phor Chamnan Amulet Archive",
   "database_version": "1.0",
-  "languages": ["zh-TW", "en", "th"],
-  "records": []
+  "languages": [
+    "zh-TW",
+    "en",
+    "th"
+  ],
+  "records": [
+    {
+      "id": "LPC-0001",
+      "name": {
+        "zh-TW": "龍婆禪南第一期紀念幣",
+        "en": "Luang Phor Chamnan First Edition Medal",
+        "th": "เหรียญรุ่นแรก หลวงพ่อชำนาญ"
+      },
+      "production_year": {
+        "buddhist_era": 2537,
+        "gregorian": 1994
+      },
+      "release_year": {
+        "buddhist_era": null,
+        "gregorian": null
+      },
+      "images": {
+        "front": "",
+        "back": "",
+        "side": [],
+        "details": []
+      },
+      "material": {
+        "zh-TW": "",
+        "en": "",
+        "th": ""
+      },
+      "quantity_issued": {
+        "total": 5000,
+        "unit": "枚；拍賣刊登者記載，非官方確認數量",
+        "variants": []
+      },
+      "sacred_ingredients": {
+        "zh-TW": "",
+        "en": "",
+        "th": ""
+      },
+      "purpose_of_creation": {
+        "zh-TW": "",
+        "en": "",
+        "th": ""
+      },
+      "issuing_temple": {
+        "zh-TW": "泰國巴吞他尼府邦庫迪通寺（待確認）",
+        "en": "Wat Bang Kudi Thong, Pathum Thani, Thailand",
+        "th": "วัดบางกุฎีทอง",
+        "original_name": "วัดบางกุฎีทอง"
+      },
+      "traditional_spiritual_attributes": {
+        "zh-TW": "",
+        "en": "",
+        "th": ""
+      },
+      "sources": [
+        {
+          "type": "auction_record",
+          "title": "เหรียญรุ่นแรก หลวงพ่อชำนาญ วัดบางกุฎีทอง",
+          "url": "https://uauction2.uamulet.com/AuctionDetail.aspx?bid=319&qid=151817",
+          "note": "賣家標示佛曆2537年製作、數量5000枚；非寺廟官方證明。"
+        },
+        {
+          "type": "competition_catalog",
+          "title": "Uamulet พระใหม่ยอดนิยม",
+          "url": "https://www.uamulet.com/DownloadFile.aspx?Type=PDF_ContestList",
+          "note": "競賽分類名錄列有เหรียญรุ่นแรก ปี 2537。"
+        }
+      ],
+      "verification_status": "pending",
+      "last_updated": "2026-11-15"
+    }
+  ]
 }

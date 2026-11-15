@@ -1,0 +1,24 @@
+{
+  "record_id": "LPC-0001",
+  "photo_policy": "Official photos preferred; collector photos accepted with permission.",
+  "photos": [
+    {
+      "file": "",
+      "view": "front",
+      "provider": "",
+      "source_url": "",
+      "permission": "pending",
+      "public_use": false,
+      "date_obtained": ""
+    },
+    {
+      "file": "",
+      "view": "back",
+      "provider": "",
+      "source_url": "",
+      "permission": "pending",
+      "public_use": false,
+      "date_obtained": ""
+    }
+  ]
+}
