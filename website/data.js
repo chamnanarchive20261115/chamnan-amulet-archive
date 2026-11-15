@@ -126,7 +126,7 @@
     });
   }
 
-  fetch("../data/amulets.json")
+  fetch("./data/amulets.json")
     .then(function (response) {
       if (!response.ok) throw new Error("HTTP " + response.status);
       return response.json();
