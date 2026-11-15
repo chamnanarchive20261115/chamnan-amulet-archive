@@ -1,0 +1,56 @@
+{
+  "id": "LPC-0001",
+  "name": {
+    "zh-TW": "",
+    "en": "",
+    "th": ""
+  },
+  "production_year": {
+    "buddhist_era": null,
+    "gregorian": null
+  },
+  "release_year": {
+    "buddhist_era": null,
+    "gregorian": null
+  },
+  "images": {
+    "front": "",
+    "back": "",
+    "side": [],
+    "details": []
+  },
+  "material": {
+    "zh-TW": "",
+    "en": "",
+    "th": ""
+  },
+  "quantity_issued": {
+    "total": null,
+    "unit": "",
+    "variants": []
+  },
+  "sacred_ingredients": {
+    "zh-TW": "",
+    "en": "",
+    "th": ""
+  },
+  "purpose_of_creation": {
+    "zh-TW": "",
+    "en": "",
+    "th": ""
+  },
+  "issuing_temple": {
+    "zh-TW": "",
+    "en": "",
+    "th": "",
+    "original_name": ""
+  },
+  "traditional_spiritual_attributes": {
+    "zh-TW": "",
+    "en": "",
+    "th": ""
+  },
+  "sources": [],
+  "verification_status": "pending",
+  "last_updated": ""
+}

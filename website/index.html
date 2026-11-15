@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="龍婆禪南聖物典藏圖鑑，保存聖物歷史與佛教文化。">
+<title>龍婆禪南聖物典藏圖鑑</title>
+<style>
+:root {
+  --bg:#f5f1e8; --paper:#fffdf8; --ink:#30271e;
+  --gold:#a78349; --muted:#817768; --line:#e6ddce;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",
+  "Noto Sans TC",Arial,sans-serif; line-height:1.7;
+}
+header {
+  background:#292118; color:#f4e5c5;
+  padding:18px 6%; display:flex; justify-content:space-between;
+  align-items:center; gap:16px; flex-wrap:wrap;
+}
+.brand { font-size:14px; letter-spacing:2px; }
+.languages { display:flex; gap:7px; }
+.languages button {
+  background:transparent; color:#f4e5c5;
+  border:1px solid #82704e; padding:7px 11px;
+  border-radius:5px; cursor:pointer;
+}
+.languages button.active { background:#a78349; color:white; }
+.hero {
+  background:#33271b; color:#f5e8cc; text-align:center;
+  padding:65px 20px 58px;
+}
+.hero small { color:#d2b77f; letter-spacing:3px; }
+.hero h1 { font-size:clamp(27px,5vw,42px); margin:12px 0; }
+.hero p { color:#dfd1b6; margin:5px; }
+main { max-width:1050px; margin:auto; padding:35px 20px 65px; }
+.search {
+  background:var(--paper); border:1px solid var(--line);
+  border-radius:10px; padding:20px; margin-bottom:28px;
+}
+.search input {
+  width:100%; padding:14px; border:1px solid var(--line);
+  border-radius:6px; font-size:16px; background:white;
+}
+.section-title {
+  border-bottom:1px solid var(--line); padding-bottom:12px;
+  margin:35px 0 20px;
+}
+.fields {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:13px;
+}
+.field {
+  background:var(--paper); border:1px solid var(--line);
+  padding:17px; border-radius:8px; min-height:100px;
+}
+.field b { display:block; color:var(--gold); font-size:13px; }
+.field span { font-size:16px; font-weight:600; }
+.notice {
+  background:#eee7d9; border-radius:8px; padding:20px;
+  color:#625644; margin-top:25px;
+}
+.empty {
+  text-align:center; padding:35px 15px;
+  background:var(--paper); border:1px dashed var(--line);
+  border-radius:8px; color:var(--muted);
+}
+footer {
+  background:#292118; color:#d9c9aa;
+  text-align:center; padding:28px 15px; font-size:13px;
+}
+@media(max-width:650px) {
+  .fields { grid-template-columns:repeat(2,1fr); }
+  header { justify-content:center; }
+}
+@media(max-width:400px) {
+  .fields { grid-template-columns:1fr; }
+}
+
+.amulet-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin:20px 0;
+}
+.amulet-card {
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:10px;
+  overflow:hidden;
+}
+.amulet-card img {
+  width:100%;
+  height:230px;
+  object-fit:contain;
+  background:#eee7da;
+}
+.amulet-card-body { padding:16px; }
+.amulet-card h3 { margin:0 0 6px; }
+.amulet-card p { color:var(--muted); font-size:13px; }
+.amulet-card details { margin-top:12px; }
+.amulet-card summary {
+  cursor:pointer;
+  color:var(--gold);
+  font-weight:bold;
+}
+.amulet-detail {
+  padding:12px 0;
+  font-size:14px;
+  overflow-wrap:anywhere;
+}
+.amulet-detail div {
+  padding:7px 0;
+  border-bottom:1px solid var(--line);
+}
+.amulet-detail b { display:block; color:var(--gold); }
+@media(max-width:700px) {
+  .amulet-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media(max-width:450px) {
+  .amulet-grid { grid-template-columns:1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">LUANG PHOR CHAMNAN ARCHIVE</div>
+  <nav class="languages">
+    <button class="active" data-lang="zh">中文</button>
+    <button data-lang="en">EN</button>
+    <button data-lang="th">ไทย</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <small>NON-PROFIT CULTURAL ARCHIVE</small>
+  <h1 id="title">龍婆禪南聖物典藏圖鑑</h1>
+  <p id="subtitle">傳承信仰・保存歷史・延續文化</p>
+  <p>Luang Phor Chamnan Amulet Archive</p>
+</section>
+
+<main>
+  <section class="search">
+    <input id="searchInput" type="search"
+      placeholder="搜尋聖物名稱、年份、材質或聖料...">
+  </section>
+
+  <h2 class="section-title" id="introTitle">聖物資料典藏標準</h2>
+  <div class="fields" id="fields"></div>
+
+  <h2 class="section-title" id="collectionTitle">聖物典藏資料</h2>
+  <div class="amulet-grid" id="amuletGrid"></div>
+<div class="empty" id="empty">
+    目前正在蒐集及考證歷年聖物資料，敬請期待。
+  </div>
+
+  <div class="notice" id="notice">
+    本站為非營利文化典藏計畫。所有聖物資料以原始文獻及可靠來源為依據；
+    未經確認的內容將標示待考證，不自行編造。
+  </div>
+</main>
+
+<footer>
+  <div id="footerText">不為營利，只為傳承。</div>
+  <div>Preserving Faith, History and Heritage</div>
+</footer>
+
+<script>
+const content = {
+  zh: {
+    title:"龍婆禪南聖物典藏圖鑑",
+    subtitle:"傳承信仰・保存歷史・延續文化",
+    intro:"聖物資料典藏標準",
+    collection:"聖物典藏資料",
+    search:"搜尋聖物名稱、年份、材質或聖料...",
+    empty:"目前正在蒐集及考證歷年聖物資料，敬請期待。",
+    notice:"本站為非營利文化典藏計畫。所有聖物資料以原始文獻及可靠來源為依據；未經確認的內容將標示待考證，不自行編造。",
+    footer:"不為營利，只為傳承。",
+    fields:["製作年份","發行年份","聖物圖片","聖物材質","發行數量","製作的聖料內容","發心的目的","發行寺廟","佛牌功效"]
+  },
+  en: {
+    title:"Luang Phor Chamnan Amulet Archive",
+    subtitle:"Preserving Faith, History and Heritage",
+    intro:"Amulet Archive Standards",
+    collection:"Amulet Collection",
+    search:"Search amulet name, year, material or ingredients...",
+    empty:"Historical amulet records are being researched and documented.",
+    notice:"This is a non-profit cultural archive. Records are based on original documents and reliable sources. Unverified information will be clearly marked.",
+    footer:"Not for profit, but for heritage.",
+    fields:["Production Year","Release Year","Amulet Photographs","Amulet Material","Quantity Issued","Sacred Ingredients","Purpose of Creation","Issuing Temple","Traditional Spiritual Attributes"]
+  },
+  th: {
+    title:"สารานุกรมวัตถุมงคลหลวงพ่อชำนาญ",
+    subtitle:"สืบสานศรัทธา อนุรักษ์ประวัติศาสตร์ สืบทอดวัฒนธรรม",
+    intro:"มาตรฐานข้อมูลวัตถุมงคล",
+    collection:"คลังข้อมูลวัตถุมงคล",
+    search:"ค้นหาชื่อวัตถุมงคล ปี เนื้อ หรือมวลสาร...",
+    empty:"อยู่ระหว่างรวบรวมและตรวจสอบข้อมูลวัตถุมงคล",
+    notice:"เว็บไซต์นี้เป็นโครงการคลังข้อมูลวัฒนธรรมที่ไม่แสวงหากำไร ข้อมูลอ้างอิงจากเอกสารต้นฉบับและแหล่งข้อมูลที่เชื่อถือได้ ข้อมูลที่ยังไม่ยืนยันจะระบุว่ารอตรวจสอบ",
+    footer:"ไม่มุ่งหวังผลกำไร เพื่อสืบทอดมรดกทางวัฒนธรรม",
+    fields:["ปีที่จัดสร้าง","ปีที่ออกให้บูชา","ภาพวัตถุมงคล","เนื้อวัตถุมงคล","จำนวนที่ออกให้บูชา","มวลสารที่ใช้จัดสร้าง","วัตถุประสงค์การจัดสร้าง","วัดที่ออกวัตถุมงคล","พุทธคุณ"]
+  }
+};
+
+const fieldContainer = document.getElementById("fields");
+function setLanguage(lang) {
+  const c = content[lang];
+  document.documentElement.lang = lang==="zh" ? "zh-Hant" : lang;
+  document.getElementById("title").textContent = c.title;
+  document.getElementById("subtitle").textContent = c.subtitle;
+  document.getElementById("introTitle").textContent = c.intro;
+  document.getElementById("collectionTitle").textContent = c.collection;
+  document.getElementById("searchInput").placeholder = c.search;
+  document.getElementById("empty").textContent = c.empty;
+  document.getElementById("notice").textContent = c.notice;
+  document.getElementById("footerText").textContent = c.footer;
+  fieldContainer.innerHTML = "";
+  c.fields.forEach((name,i) => {
+    const item = document.createElement("div");
+    item.className = "field";
+    const number = document.createElement("b");
+    number.textContent = String(i+1).padStart(2,"0");
+    const label = document.createElement("span");
+    label.textContent = name;
+    item.append(number,label);
+    fieldContainer.appendChild(item);
+  });
+  document.querySelectorAll("[data-lang]").forEach(button => {
+    button.classList.toggle("active",button.dataset.lang===lang);
+  });
+}
+document.querySelectorAll("[data-lang]").forEach(button => {
+  button.addEventListener("click",()=>setLanguage(button.dataset.lang));
+});
+document.getElementById("searchInput").addEventListener("input",e=>{
+  document.getElementById("empty").textContent =
+    e.target.value.trim()
+    ? "目前資料庫尚未匯入聖物紀錄，待資料建檔後即可搜尋。"
+    : content[document.querySelector("[data-lang].active").dataset.lang].empty;
+});
+setLanguage("zh");
+</script>
+<script src="data.js"></script>
+</body>
+</html>
