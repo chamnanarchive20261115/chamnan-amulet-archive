@@ -1,0 +1,40 @@
+{
+  "record_id": "LPC-0001",
+  "research_title": "Material and Edition Verification",
+  "variants": [
+    {
+      "variant_id": "LPC-0001-M01",
+      "material": {
+        "zh-TW": "紅銅",
+        "en": "Copper",
+        "th": "เนื้อทองแดง"
+      },
+      "evidence_type": [
+        "collector_listing",
+        "certificate_reference"
+      ],
+      "evidence_description": "收藏資料及保證卡線索提及紅銅材質，尚待原始保證卡及實物核對。",
+      "image_files": [],
+      "quantity": null,
+      "verification_status": "pending"
+    }
+  ],
+  "unverified_materials": [
+    {
+      "name": "เนื้อเงิน",
+      "description": "銀質版本，目前尚無可靠證據確認。",
+      "verification_status": "unverified"
+    },
+    {
+      "name": "Other materials",
+      "description": "其他材質版本，等待後續調查。",
+      "verification_status": "unverified"
+    }
+  ],
+  "research_notes": [
+    "不得將拍賣資料直接視為寺廟官方紀錄。",
+    "不同材質版本必須有獨立證據。",
+    "未確認的發行數量一律保留 null。"
+  ],
+  "last_updated": "2026-11-15"
+}
