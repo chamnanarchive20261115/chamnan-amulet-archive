@@ -1,0 +1,28 @@
+{
+  "record_id": "LPC-0001",
+  "research_title": "Edition and Quantity Verification",
+  "reported_total_quantity": [
+    {
+      "quantity": 5000,
+      "unit": "pieces",
+      "source_type": "auction_listing",
+      "source_description": "拍賣刊登者記載的數量",
+      "official_confirmation": false,
+      "verification_status": "pending"
+    }
+  ],
+  "editions": [],
+  "research_questions": [
+    "是否存在不同材質版本？",
+    "是否存在不同模具或版別？",
+    "5000枚是否為全部版本的總數？",
+    "是否有寺廟官方發行紀錄？"
+  ],
+  "research_notes": [
+    "拍賣數量不得直接視為官方發行數量。",
+    "不同版別必須有實物或文獻證據。",
+    "未確認的數量不得自行推測。"
+  ],
+  "verification_status": "pending",
+  "last_updated": "2026-11-15"
+}
