@@ -236,12 +236,6 @@ function setLanguage(lang) {
 document.querySelectorAll("[data-lang]").forEach(button => {
   button.addEventListener("click",()=>setLanguage(button.dataset.lang));
 });
-document.getElementById("searchInput").addEventListener("input",e=>{
-  document.getElementById("empty").textContent =
-    e.target.value.trim()
-    ? "目前資料庫尚未匯入聖物紀錄，待資料建檔後即可搜尋。"
-    : content[document.querySelector("[data-lang].active").dataset.lang].empty;
-});
 setLanguage("zh");
 </script>
 <script src="data.js"></script>

@@ -1,0 +1,34 @@
+{
+  "record_id": "LPC-0001",
+  "research_title": "Traditional Spiritual Beliefs and Attributes",
+  "attributes": [
+    {
+      "attribute": {
+        "zh-TW": "",
+        "en": "",
+        "th": ""
+      },
+      "description": {
+        "zh-TW": "",
+        "en": "",
+        "th": ""
+      },
+      "source_type": "",
+      "source_url": "",
+      "verification_status": "unknown"
+    }
+  ],
+  "research_questions": [
+    "龍婆禪南是否曾親自說明這款紀念幣的傳統功效？",
+    "寺廟是否有正式的功效介紹？",
+    "泰國信眾主要流傳哪些信仰說法？",
+    "是否有可追溯的泰文文獻？"
+  ],
+  "research_notes": [
+    "傳統信仰不等於科學證實。",
+    "不同來源的功效說法必須分開記錄。",
+    "沒有來源的功效不得自行填寫。"
+  ],
+  "verification_status": "pending",
+  "last_updated": "2026-11-15"
+}

@@ -1,0 +1,40 @@
+{
+  "record_id": "LPC-0001",
+  "research_title": "Issuance History and Purpose",
+  "production_year": {
+    "buddhist_era": 2537,
+    "gregorian": 1994,
+    "verification_status": "pending"
+  },
+  "release_year": {
+    "buddhist_era": null,
+    "gregorian": null,
+    "verification_status": "unknown"
+  },
+  "issuing_temple": {
+    "original_name": "วัดบางกุฎีทอง",
+    "verification_status": "pending"
+  },
+  "creation_purpose": {
+    "zh-TW": "",
+    "en": "",
+    "th": "",
+    "verification_status": "unknown"
+  },
+  "consecration_ceremony": {
+    "date": null,
+    "description": "",
+    "participants": [],
+    "verification_status": "unknown"
+  },
+  "historical_evidence": [],
+  "research_questions": [
+    "當年製作紀念幣的主要目的為何？",
+    "是否有寺廟募款或建設活動？",
+    "是否舉行正式加持儀式？",
+    "實際發行日期為何？",
+    "是否有2537年的寺廟原始紀錄？"
+  ],
+  "verification_status": "pending",
+  "last_updated": "2026-11-15"
+}
