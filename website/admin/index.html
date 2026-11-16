@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>管理員登入｜龍婆禪南聖物典藏圖鑑</title>
+<style>
+:root{--bg:#f5f1e8;--paper:#fffdf8;--ink:#30271e;--gold:#a78349;--muted:#817768;--line:#e6ddce}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Noto Sans TC",Arial,sans-serif;display:grid;place-items:center;padding:22px}
+.panel{width:min(100%,440px);background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:30px;box-shadow:0 12px 36px #30271e12}
+.brand{font-size:12px;letter-spacing:2px;color:var(--gold);text-align:center}
+h1{text-align:center;font-size:25px;margin:10px 0 4px}
+.subtitle{text-align:center;color:var(--muted);font-size:13px;margin:0 0 26px}
+label{display:block;font-size:14px;font-weight:600;margin:16px 0 7px}
+input{width:100%;padding:13px;border:1px solid var(--line);border-radius:7px;font-size:16px;background:#fff;color:var(--ink)}
+input:focus{outline:2px solid #a7834966;border-color:var(--gold)}
+button{width:100%;border:0;border-radius:7px;padding:13px;background:#33271b;color:#fff;font-size:15px;font-weight:600;cursor:pointer;margin-top:17px}
+button:disabled{opacity:.55;cursor:wait}
+.secondary{background:#eee7d9;color:var(--ink)}
+.status{min-height:24px;margin:14px 0 0;font-size:13px;color:var(--muted);text-align:center}
+.hidden{display:none}
+.back{display:block;text-align:center;margin-top:22px;color:var(--gold);font-size:13px;text-decoration:none}
+#otp{letter-spacing:8px;text-align:center;font-size:24px}
+</style>
+</head>
+<body>
+<main class="panel">
+  <div class="brand">LUANG PHOR CHAMNAN ARCHIVE</div>
+  <h1>管理員登入</h1>
+  <p class="subtitle">ADMINISTRATOR ACCESS</p>
+
+  <section id="emailStep">
+    <label for="email">管理員電子郵件</label>
+    <input id="email" type="email" autocomplete="username" placeholder="輸入已授權的管理員信箱" required>
+    <button id="sendButton" type="button">寄送六位數驗證碼</button>
+  </section>
+
+  <section id="otpStep" class="hidden">
+    <label for="otp">六位數驗證碼</label>
+    <input id="otp" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000">
+    <button id="verifyButton" type="button">驗證並登入</button>
+    <button id="resendButton" class="secondary" type="button">重新寄送驗證碼</button>
+  </section>
+
+  <section id="signedIn" class="hidden">
+    <p id="welcome" style="text-align:center"></p>
+    <p class="status">登入驗證成功。管理後台功能將於下一階段接續開通。</p>
+    <button id="logoutButton" type="button">登出</button>
+  </section>
+
+  <p id="status" class="status" role="status" aria-live="polite"></p>
+  <a class="back" href="/">返回典藏首頁</a>
+</main>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  let email = "";
+
+  async function api(path, body) {
+    const response = await fetch("/api/admin/" + path, {
+      method: body ? "POST" : "GET",
+      headers: body ? {"Content-Type":"application/json"} : {},
+      credentials: "same-origin",
+      body: body ? JSON.stringify(body) : undefined
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || result.ok === false) {
+      throw new Error(result.error || "操作失敗，請稍後再試。");
+    }
+    return result;
+  }
+
+  function busy(button, state, label) {
+    button.disabled = state;
+    if (label) button.textContent = state ? "處理中…" : label;
+  }
+
+  async function checkSession() {
+    try {
+      const result = await api("me");
+      showSignedIn(result.admin);
+    } catch (_) {}
+  }
+
+  function showSignedIn(admin) {
+    $("emailStep").classList.add("hidden");
+    $("otpStep").classList.add("hidden");
+    $("signedIn").classList.remove("hidden");
+    $("welcome").textContent = admin.email + "（" + admin.role.toUpperCase() + "）";
+    $("status").textContent = "";
+  }
+
+  async function sendCode() {
+    email = $("email").value.trim().toLowerCase();
+    if (!email) { $("status").textContent = "請先輸入管理員電子郵件。"; return; }
+    busy($("sendButton"), true);
+    busy($("resendButton"), true);
+    $("status").textContent = "";
+    try {
+      const result = await api("send-otp", {email});
+      $("emailStep").classList.add("hidden");
+      $("otpStep").classList.remove("hidden");
+      $("status").textContent = result.message || "請檢查電子郵件。";
+      $("otp").focus();
+    } catch (error) {
+      $("status").textContent = error.message;
+    } finally {
+      busy($("sendButton"), false, "寄送六位數驗證碼");
+      busy($("resendButton"), false, "重新寄送驗證碼");
+    }
+  }
+
+  async function verifyCode() {
+    const code = $("otp").value.trim();
+    if (!/^\d{6}$/.test(code)) { $("status").textContent = "請輸入完整六位數驗證碼。"; return; }
+    busy($("verifyButton"), true);
+    try {
+      const result = await api("verify-otp", {email, code});
+      showSignedIn(result.admin);
+    } catch (error) {
+      $("status").textContent = error.message;
+    } finally {
+      busy($("verifyButton"), false, "驗證並登入");
+    }
+  }
+
+  $("sendButton").addEventListener("click", sendCode);
+  $("resendButton").addEventListener("click", sendCode);
+  $("verifyButton").addEventListener("click", verifyCode);
+  $("otp").addEventListener("input", () => {
+    $("otp").value = $("otp").value.replace(/\D/g, "").slice(0, 6);
+  });
+  $("otp").addEventListener("keydown", event => {
+    if (event.key === "Enter") verifyCode();
+  });
+  $("logoutButton").addEventListener("click", async () => {
+    try { await api("logout", {}); } catch (_) {}
+    $("signedIn").classList.add("hidden");
+    $("emailStep").classList.remove("hidden");
+    $("email").value = "";
+    $("otp").value = "";
+    $("status").textContent = "已登出。";
+  });
+
+  checkSession();
+})();
+</script>
+</body>
+</html>
